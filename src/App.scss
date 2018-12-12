@@ -1,0 +1,278 @@
+$app-background: white;
+$app-height: calc(100% - 8em);
+$app-width: 48em;
+
+$ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+$ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+$ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+$ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+$ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+$ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+$ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+
+
+@mixin text-gradient {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffecfc+0,ffecfc+100&1+0,0+10,0+90,1+100 */
+    background: -moz-linear-gradient(top, rgba($app-background,1) 0%, rgba($app-background,0) 8%, rgba($app-background,0) 92%, rgba($app-background,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba($app-background,1) 0%,rgba($app-background,0) 8%,rgba($app-background,0) 92%,rgba($app-background,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba($app-background,1) 0%,rgba($app-background,0) 8%,rgba($app-background,0) 92%,rgba($app-background,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffecfc', endColorstr='#ffecfc',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin divider-gradient {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c4c4c4+0,c4c4c4+100&0+0,1+20,1+50,1+80,0+100 */
+    background: -moz-linear-gradient(left, rgba(196,196,196,0) 0%, rgba(196,196,196,1) 20%, rgba(196,196,196,1) 50%, rgba(196,196,196,1) 80%, rgba(196,196,196,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(196,196,196,0) 0%,rgba(196,196,196,1) 20%,rgba(196,196,196,1) 50%,rgba(196,196,196,1) 80%,rgba(196,196,196,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(196,196,196,0) 0%,rgba(196,196,196,1) 20%,rgba(196,196,196,1) 50%,rgba(196,196,196,1) 80%,rgba(196,196,196,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00c4c4c4', endColorstr='#00c4c4c4',GradientType=1 ); /* IE6-9 */
+}
+
+@mixin rounded {
+    border-radius: 6px;
+    border: 1px solid grey;
+    box-shadow: 0 1px 1px grey;
+}
+
+.App {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: $app-background;
+    overflow: hidden;
+}
+
+.app-wrap {
+    margin: 1.5em auto;
+    height: 100%;
+    width: $app-width;
+    position: relative;
+}
+
+.app-content {
+    height: $app-height;
+    width: $app-width;
+    position: absolute;
+    top: 0;
+}
+
+.app-message-wrapper {
+    height: $app-height;
+    position: relative;
+
+    .app-message {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        //overflow-y: scroll;
+
+        .app-message-content {
+            padding-right: 1em;
+
+            >:first-child {
+                margin-top: 2.5em;
+            }
+        }
+    }
+
+    .app-message-gradient {
+        z-index: 1;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        //width: 48em;
+        //height: 100%;
+        position: absolute;
+        @include text-gradient;
+        pointer-events: none;
+    }
+}
+
+.linear-horizontal {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.linear-vertical {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app-back {
+    padding-right: 0.5em;
+    @include rounded;
+
+    &:hover {
+        background-color: rgb(240, 240, 240);
+        cursor: pointer;
+    }
+}
+
+.app-divider {
+    width: 100%;
+    height: 3px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    @include divider-gradient;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.grid-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.grid-element {
+    margin: 1em;
+}
+
+.user {
+    @include rounded;
+    padding: 0.5em;
+    transition: transform 0.1s ease-in-out,
+                background-color 0.1s ease-in-out;
+
+    &:hover {
+        -webkit-transform: scale(1.2, 1.2);
+        -moz-transform: scale(1.2, 1.2);
+        -ms-transform: scale(1.2, 1.2);
+        -o-transform: scale(1.2, 1.2);
+        transform: scale(1.2, 1.2);
+        background-color: rgb(240, 240, 240);
+        cursor: pointer;
+    }
+}
+
+.title {
+    padding-left: 0.5em;
+}
+
+.snow {
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+.cake {
+    font-family: "Calibri", sans-serif;
+}
+
+.vase {
+    font-family: "Calibri", sans-serif;
+
+    h1 {
+        font-family: "Calibri Light", sans-serif;
+        margin-bottom: 0;
+    }
+
+    p {
+        margin-top: 0;
+    }
+}
+
+.zack {
+    font-family: "Calibri", sans-serif;
+}
+
+.tyler {
+    h1 {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+}
+
+.cal {
+    font-family: Calibri, sans-serif;
+    font-size: 14pt;
+    h1 {
+        font-size: 20pt;
+        font-weight: normal;
+        text-align: center;
+    }
+}
+
+.show-more {
+    margin: 0 auto;
+    padding: 0.5em;
+    display: inline;
+    @include rounded;
+    transition: transform 0.1s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(240, 240, 240);
+    }
+}
+
+.show {
+    display: initial;
+}
+
+.hide {
+    display: none;
+}
+
+@mixin transitions-in {
+    transition:
+            left 500ms $ease-in-out-quart, //ease-in-out,
+            opacity 500ms $ease-in-out-quart;//ease-in-out;
+}
+
+@mixin transitions-out {
+    transition:
+            left 500ms $ease-in-out-quart,
+            opacity 500ms $ease-in-out-quart;
+}
+
+.index-enter {
+    left: -100%;
+    opacity: 0;
+
+    &.index-enter-active {
+        left: 0;
+        opacity: 100;
+        @include transitions-in;
+    }
+}
+.index-leave {
+    left: 0;
+    opacity: 100;
+
+    &.index-leave-active {
+        left: -100%;
+        opacity: 0;
+        @include transitions-out;
+    }
+}
+
+.content-enter {
+    left: 100%;
+    opacity: 0;
+
+    &.content-enter-active {
+        left: 0;
+        opacity: 100;
+        @include transitions-in;
+    }
+}
+.content-leave {
+    left: 0;
+    opacity: 100;
+
+    &.content-leave-active {
+        left: 100%;
+        opacity: 0;
+        @include transitions-out;
+    }
+}
