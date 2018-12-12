@@ -101,7 +101,7 @@ class Index extends Component {
                     <div className="app-divider" />
                 </div>
 
-                <div className="grid-content index-content">
+                <div className="index-content">
                     {allUsers.map(user => <User img={user.img} name={user.title} onClick={this.props.onUserClick}/>)}
                 </div>
 

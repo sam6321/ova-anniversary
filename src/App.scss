@@ -49,13 +49,16 @@ $ease-in-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     flex-shrink: 0;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .app-wrapper {
     width: 80vw;
     height: calc(100vh - 2em);
     max-width: 48em;
     margin: 1em auto;
     position: relative;
-    overflow-x: hidden;
 }
 
 .app-content {
