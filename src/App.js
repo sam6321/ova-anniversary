@@ -43,9 +43,9 @@ const allUsers = [
 
 function Title(props) {
     return (
-        <div className="linear-horizontal">
+        <div className="linear-horizontal title">
             <img src={props.img} width="96" height="96" alt={props.title}/>
-            <h1 className="title">{props.title}</h1>
+            <h1>{props.title}</h1>
         </div>
     );
 }
@@ -58,10 +58,12 @@ class Message extends Component {
 
     render() {
         return (
-            <>
-                <Title {...this.props}/>
-                <div className="app-divider" />
-                <div className="app-message-wrapper">
+            <div className="app-content">
+                <div className="grid-header">
+                    <Title {...this.props}/>
+                    <div className="app-divider" />
+                </div>
+                <div className="app-message-wrapper grid-content">
                     <div className="app-message-gradient"/>
                     <ScrollArea className="app-message"
                                 contentClassName="app-message-content"
@@ -70,33 +72,18 @@ class Message extends Component {
                     </ScrollArea>
                 </div>
 
-                <div className="app-divider" />
-                <div className="linear-horizontal app-back" onClick={this.props.onBack}>
-                    <img src={back} alt="Back"/>
-                    <span>Back</span>
+                <div className="grid-footer">
+                    <div className="app-divider" />
+                    <div className="linear-horizontal app-back" onClick={this.props.onBack}>
+                        <img src={back} alt="Back"/>
+                        <span>Back</span>
+                    </div>
                 </div>
-            </>
+            </div>
         )
     }
 }
 
-function Grid(props) {
-    let currentRow = [];
-    const rows = props.children.reduce(((rows, child, index, children) => {
-        currentRow.push(<div className="grid-element">{child}</div>);
-        if(currentRow.length === props.maxWidth || index === children.length - 1) {
-            rows.push(<div className="grid-row">{currentRow}</div>);
-            currentRow = [];
-        }
-        return rows;
-    }), []);
-
-    return (
-        <div className="grid">
-            {rows}
-        </div>
-    );
-}
 function User(props) {
     return (
         <div className="user linear-vertical" onClick={() => props.onClick(props.name)}>
@@ -108,14 +95,20 @@ function User(props) {
 class Index extends Component {
     render() {
         return (
-            <>
-                <Title img={indexImage} title="OVA One Year Anniversary"/>
-                <div className="app-divider" />
-                <Grid maxWidth={5}>
+            <div className="app-content">
+                <div className="grid-header">
+                    <Title img={indexImage} title="OVA One Year Anniversary"/>
+                    <div className="app-divider" />
+                </div>
+
+                <div className="grid-content index-content">
                     {allUsers.map(user => <User img={user.img} name={user.title} onClick={this.props.onUserClick}/>)}
-                </Grid>
-                <div className="app-divider" />
-            </>
+                </div>
+
+                <div className="grid-footer">
+                    <div className="app-divider" />
+                </div>
+            </div>
         );
     }
 }
@@ -142,29 +135,27 @@ class App extends Component {
                     <Content/>
                 </Message>
             );
-            content = <div key={0} className="app-content">{content}</div>;
         }
         else {
             index = <Index onUserClick={this.onUserClick}/>;
-            index = <div key={0} className="app-content">{index}</div>
         }
-        return (
-            <div className="App">
-                <div className="app-wrap">
-                    <CSSTransitionGroup
-                        transitionName="index"
-                        transitionEnterTimeout={500}
-                        transitionLeaveTimeout={500} >
-                        {[index]}
-                    </CSSTransitionGroup>
 
-                    <CSSTransitionGroup
-                        transitionName="content"
-                        transitionEnterTimeout={500}
-                        transitionLeaveTimeout={500}>
-                        {[content]}
-                    </CSSTransitionGroup>
-                </div>
+        return (
+            <div className="app-wrapper">
+                <CSSTransitionGroup
+                    transitionName="index"
+                    transitionEnterTimeout={500}
+                    transitionEnter
+                    transitionLeaveTimeout={500} >
+                    {index}
+                </CSSTransitionGroup>
+
+                <CSSTransitionGroup
+                    transitionName="content"
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={500}>
+                    {content}
+                </CSSTransitionGroup>
             </div>
         );
     }
