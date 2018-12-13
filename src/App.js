@@ -19,6 +19,8 @@ import Supa from './messages/supa.js';
 import Zack from './messages/zack.js';
 import Cal from './messages/cal.js';
 import Dou from './messages/douwert.js';
+import Ventis from './messages/ventis.js';
+import Mark from './messages/mark.js';
 
 import defaultImage from './logo.svg'
 import indexImage from './ova.png';
@@ -40,7 +42,9 @@ const allUsers = [
     Supa,
     Zack,
     Cal,
-    Dou
+    Dou,
+    Ventis,
+    Mark
 ];
 
 function Title(props) {
