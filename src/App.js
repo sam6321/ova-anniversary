@@ -21,6 +21,7 @@ import Cal from './messages/cal.js';
 import Dou from './messages/douwert.js';
 import Ventis from './messages/ventis.js';
 import Mark from './messages/mark.js';
+import Kray from './messages/kray.js';
 
 import defaultImage from './logo.svg'
 import indexImage from './ova.png';
@@ -44,7 +45,8 @@ const allUsers = [
     Cal,
     Dou,
     Ventis,
-    Mark
+    Mark,
+    Kray
 ];
 
 function Title(props) {
