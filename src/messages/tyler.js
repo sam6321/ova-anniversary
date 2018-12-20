@@ -163,6 +163,21 @@ export default class extends React.Component {
                     that was my only shot at winning so big big thanks I got to have the honour just once :p
                 </p>
 
+                <h1>Pooh</h1>
+                <p>
+                    Sorry you weren’t added in the first place, doesn’t make you less important at all. You’re a cool guy
+                    and although we have had disagreements, you’ve listened to me when I needed and you’re a cool guy so
+                    thank you for being around. You’re not as shitty as you think you are so try and remember that.
+                </p>
+
+                <h1>Saag</h1>
+                <p>
+                    Another one I’m sorry for not including in the first place. Although we don’t interact much and
+                    we’ve never really talked, you’re still a good guy and you’re always welcome in OVA and it’s good
+                    to see you talking when you do. Also you and neel are good together it’s nice seeing you guys making
+                    eachother
+                </p>
+
                 <h1>Summary</h1>
                 <p>
                     Even tho I’m an asshole y’all mean a lot to me, and I don’t think I could ever really put that all
