@@ -22,6 +22,7 @@ import Dou from './messages/douwert.js';
 import Ventis from './messages/ventis.js';
 import Mark from './messages/mark.js';
 import Kray from './messages/kray.js';
+import Sayo from './messages/sayo.js';
 
 import defaultImage from './logo.svg'
 import indexImage from './ova.png';
@@ -46,7 +47,8 @@ const allUsers = [
     Dou,
     Ventis,
     Mark,
-    Kray
+    Kray,
+    Sayo
 ];
 
 function Title(props) {
